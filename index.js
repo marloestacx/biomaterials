@@ -20,7 +20,7 @@ var svg = d3
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("newdata.json", function (error, flare) {
+d3.json("data.json", function (error, flare) {
   if (error) throw error;
 
   root = flare;
