@@ -17,9 +17,33 @@
   stroke: #ccc;
   stroke-width: 1.5px;
 }
-div.info {
+
+.hide {
+  display: none;
+}
+
+.info {
   position: absolute;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   background-color: white;
-  height: 100px;
+  /* height: 500px;
+  width: 600px;
+  align-items: center; */
+  margin: 0 auto;
+  width: 90%;
+  /* border: 3px solid #73ad21; */
+  /* padding: 10px; */
+}
+
+.info h1 {
+  padding: 10px;
+}
+
+.info p {
+  padding: 10px;
+}
+
+.info circle {
+  stroke: steelblue;
+  stroke-width: 3px;
 }
