@@ -187,7 +187,7 @@
               "subcategory": "",
               "functions": "['various functions in microbiological lab work']",
               "base": "plants",
-              "origin": "['malt extract', 'glucose', 'dextrose', 'corn syrup', 'sugar', 'potato']"
+              "origin": "['malt extract', 'glucose', 'dextrose', 'corn syrup', 'sugar', 'potato', 'vegetable peptone', 'starches', 'dextrose', 'maltose', 'glycerine']"
             },
             {
               "name": "protein",
@@ -196,14 +196,6 @@
               "functions": "['various functions in microbiological lab work']",
               "base": "plants",
               "origin": "['vegetable peptone']"
-            },
-            {
-              "name": "carbon (sugars)",
-              "category": "growth media",
-              "subcategory": "",
-              "functions": "['various functions in microbiological lab work']",
-              "base": "plants",
-              "origin": "['vegetable peptone', 'starches', 'dextrose', 'maltose', 'glycerine']"
             },
             {
               "name": "pH buffer",
@@ -635,36 +627,42 @@
           "base": "microbial",
           "children": [
             {
-              "name": "cellulose",
-              "category": "polymers",
-              "subcategory": "polysaccharides",
-              "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+              "name": "polysaccharides",
               "base": "microbial",
-              "origin": "['acetobacter xylinum (kombucha)', 'mycelium']"
-            },
-            {
-              "name": "gums (bacteria)",
-              "category": "polymers",
-              "subcategory": "polysaccharides",
-              "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
-              "base": "microbial",
-              "origin": "['xanthan', 'gellan', 'bacterial alginate (azotiobacter vinelandii)']"
-            },
-            {
-              "name": "gums (algae)",
-              "category": "polymers",
-              "subcategory": "polysaccharides",
-              "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
-              "base": "microbial",
-              "origin": "['alginate', 'agar', 'carrageenan']"
-            },
-            {
-              "name": "fermented biomass",
-              "category": "polymers",
-              "subcategory": "polysaccharides",
-              "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
-              "base": "microbial",
-              "origin": "['PLA (corn)']"
+              "children": [
+                {
+                  "name": "cellulose",
+                  "category": "polymers",
+                  "subcategory": "polysaccharides",
+                  "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+                  "base": "microbial",
+                  "origin": "['acetobacter xylinum (kombucha)', 'mycelium']"
+                },
+                {
+                  "name": "gums (bacteria)",
+                  "category": "polymers",
+                  "subcategory": "polysaccharides",
+                  "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+                  "base": "microbial",
+                  "origin": "['xanthan', 'gellan', 'bacterial alginate (azotiobacter vinelandii)']"
+                },
+                {
+                  "name": "gums (algae)",
+                  "category": "polymers",
+                  "subcategory": "polysaccharides",
+                  "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+                  "base": "microbial",
+                  "origin": "['alginate', 'agar', 'carrageenan']"
+                },
+                {
+                  "name": "fermented biomass",
+                  "category": "polymers",
+                  "subcategory": "polysaccharides",
+                  "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+                  "base": "microbial",
+                  "origin": "['PLA (corn)']"
+                }
+              ]
             }
           ]
         },
@@ -796,12 +794,18 @@
           "base": "chemical compounds",
           "children": [
             {
-              "name": "chemically modified cellolose",
-              "category": "polymers",
-              "subcategory": "polysaccharides",
-              "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+              "name": "polysaccharides",
               "base": "chemical compounds",
-              "origin": "['Carboxy Methyl Cellulose (CMC)', 'Methyl Cellulose (MC)']"
+              "children": [
+                {
+                  "name": "chemically modified cellolose",
+                  "category": "polymers",
+                  "subcategory": "polysaccharides",
+                  "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+                  "base": "chemical compounds",
+                  "origin": "['Carboxy Methyl Cellulose (CMC)', 'Methyl Cellulose (MC)']"
+                }
+              ]
             }
           ]
         },
@@ -1123,20 +1127,32 @@
           "base": "petrol-based",
           "children": [
             {
-              "name": "petrol-based resins",
-              "category": "polymers",
-              "subcategory": "resins",
-              "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+              "name": "resins",
               "base": "petrol-based",
-              "origin": "['']"
+              "children": [
+                {
+                  "name": "petrol-based resins",
+                  "category": "polymers",
+                  "subcategory": "resins",
+                  "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+                  "base": "petrol-based",
+                  "origin": "['']"
+                }
+              ]
             },
             {
-              "name": "elastomer (synthetic)",
-              "category": "polymers",
-              "subcategory": "elastomers & rubbers",
-              "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+              "name": "elastomers & rubbers",
               "base": "petrol-based",
-              "origin": "['synthetic latex']"
+              "children": [
+                {
+                  "name": "elastomer (synthetic)",
+                  "category": "polymers",
+                  "subcategory": "elastomers & rubbers",
+                  "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
+                  "base": "petrol-based",
+                  "origin": "['synthetic latex']"
+                }
+              ]
             }
           ]
         },
