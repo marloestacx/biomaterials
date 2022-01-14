@@ -1,3 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #f8f4e8;
+  padding: 1em;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-evenly; */
+}
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+select {
+  margin: auto;
+}
+
+#dataviz {
+  text-align: center;
+}
 .node {
   cursor: pointer;
 }
