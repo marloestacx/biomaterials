@@ -19,29 +19,6 @@ div.on("mouseout", function (d) {
 // Creates sources <svg> element
 const svginfo = d3.select("#shapes");
 
-// var tooltipWithContent = d3.selectAll("#info, #info *");
-// function equalToEventTarget() {
-//   return this == d3.event.target;
-// }
-
-// d3.select("body").on("click", function () {
-//   var outside = tooltipWithContent.filter(equalToEventTarget).empty();
-//   if (d3.select("#info").classed()[0][0].className == "info") {
-//     div.attr("class", "hide");
-//   }
-// });
-
-// const svg = document.querySelector(".svg");
-// const circle = document.querySelector(".circle");
-
-// var svg = d3
-//   .select("body")
-//   .append("svg")
-//   .attr("width", width + margin.right + margin.left)
-//   .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 function getData() {
   d3.json("data.json", function (error, root) {
     var data = cluster.nodes(root);
@@ -54,6 +31,8 @@ function getData() {
         return d.base;
       })
       .keys();
+
+    console.log(allGroup);
 
     // add the options to the button
     d3.select("#selectButton")
@@ -73,15 +52,15 @@ function getData() {
 }
 getData();
 
-var svg = d3
-  .select("#dataviz")
-  .append("svg")
-  .attr("width", width + margin.right + margin.left)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 function makeDendogram(data) {
+  var svg = d3
+    .select("#dataviz")
+    .append("svg")
+    .attr("width", width + margin.right + margin.left)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
   console.log(data);
 
   var links = cluster.links(data);
@@ -96,30 +75,28 @@ function makeDendogram(data) {
     .enter()
     .append("g")
     .attr("class", "node")
-
     .attr("transform", function (d) {
       return "translate(" + d.y + "," + d.x + ")";
     });
-
-  node.exit().remove();
-
-  link.exit().remove();
 
   node
     .append("circle")
     .attr("r", 4.5)
     .style("fill", function (d) {
-      if (d.base === "plants") {
+      if (d.base === "plants" || d.headbase === "plants") {
         return "green";
-      } else if (d.base === "animal") {
+      } else if (d.base === "animal" || d.headbase === "animal") {
         return "red";
-      } else if (d.base === "petrol-based") {
+      } else if (d.base === "petrol-based" || d.headbase === "petrol-based") {
         return "black";
-      } else if (d.base === "microbial") {
+      } else if (d.base === "microbial" || d.headbase === "microbial") {
         return "lightgreen";
-      } else if (d.base === "inorganic") {
+      } else if (d.base === "inorganic" || d.headbase === "inorganic") {
         return "orange";
-      } else if (d.base === "chemical compounds") {
+      } else if (
+        d.base === "chemical compounds" ||
+        d.headbase === "chemical compounds"
+      ) {
         return "yellow";
       }
     });
@@ -142,17 +119,23 @@ function makeDendogram(data) {
         .attr("cy", 80)
         .attr("r", 37.5)
         .style("fill", function () {
-          if (d.base === "plants") {
+          if (d.base === "plants" || d.headbase === "plants") {
             return "green";
-          } else if (d.base === "animal") {
+          } else if (d.base === "animal" || d.headbase === "animal") {
             return "red";
-          } else if (d.base === "petrol-based") {
+          } else if (
+            d.base === "petrol-based" ||
+            d.headbase === "petrol-based"
+          ) {
             return "black";
-          } else if (d.base === "microbial") {
+          } else if (d.base === "microbial" || d.headbase === "microbial") {
             return "lightgreen";
-          } else if (d.base === "inorganic") {
+          } else if (d.base === "inorganic" || d.headbase === "inorganic") {
             return "orange";
-          } else if (d.base === "chemical compounds") {
+          } else if (
+            d.base === "chemical compounds" ||
+            d.headbase === "chemical compounds"
+          ) {
             return "yellow";
           }
         });
@@ -177,17 +160,20 @@ function makeDendogram(data) {
 }
 
 function update(selectedGroup) {
+  d3.selectAll("svg").remove();
+
   d3.json("data.json", function (error, root) {
     var newData = cluster.nodes(root);
 
-    const dataFilter = newData.filter(function (d) {
+    var dataFilter = newData.filter(function (d) {
       return d.base == selectedGroup;
     });
+
+    if (selectedGroup == "all") {
+      dataFilter = newData;
+    }
 
     makeDendogram(dataFilter);
     console.log(dataFilter);
   });
-  // Create new data with the selection?
-
-  // makeDendogram(dataFilter);
 }
