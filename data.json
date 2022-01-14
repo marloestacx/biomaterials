@@ -1,5 +1,6 @@
 {
   "name": "",
+  "base": "all",
   "children": [
     {
       "name": "plants",
