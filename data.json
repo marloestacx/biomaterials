@@ -5,14 +5,17 @@
     {
       "name": "plants",
       "base": "plants",
+      "category": "all",
       "children": [
         {
           "name": "polymers",
+          "category": "polymers",
           "base": "plants",
           "children": [
             {
               "name": "polysaccharides",
               "base": "plants",
+              "category": "polymers",
               "children": [
                 {
                   "name": "cellulose",
@@ -67,6 +70,7 @@
             {
               "name": "protein",
               "base": "plants",
+              "category": "polymers",
               "children": [
                 {
                   "name": "gluten",
@@ -105,6 +109,7 @@
             {
               "name": "resins",
               "base": "plants",
+              "category": "polymers",
               "children": [
                 {
                   "name": "resin plant",
@@ -119,6 +124,7 @@
             {
               "name": "elastomers & rubbers",
               "base": "plants",
+              "category": "polymers",
               "children": [
                 {
                   "name": "elastomer (plant)",
@@ -135,6 +141,7 @@
         {
           "name": "mordants, tannins, binders, redox agents",
           "base": "plants",
+          "category": "mordants, tannins, binders, redox agents",
           "children": [
             {
               "name": "tannins (wood)",
@@ -181,6 +188,7 @@
         {
           "name": "growth media",
           "base": "plants",
+          "category": "growth media",
           "children": [
             {
               "name": "carbon (sugars)",
@@ -227,6 +235,7 @@
         {
           "name": "plasticizers",
           "base": "plants",
+          "category": "plasticizers",
           "children": [
             {
               "name": "poylols",
@@ -273,6 +282,7 @@
         {
           "name": "pigments",
           "base": "plants",
+          "category": "pigments",
           "children": [
             {
               "name": "tree",
@@ -304,6 +314,7 @@
         {
           "name": "fillers",
           "base": "plants",
+          "category": "fillers",
           "children": [
             {
               "name": "plants",
@@ -318,6 +329,7 @@
         {
           "name": "pH modifier",
           "base": "plants",
+          "category": "pH modifiers",
           "children": [
             {
               "name": "acidic",
@@ -332,6 +344,7 @@
         {
           "name": "solvents and vehicles",
           "base": "plants",
+          "category": "solvents and vehicles",
           "children": [
             {
               "name": "oils",
@@ -346,6 +359,7 @@
         {
           "name": "miscellaneous",
           "base": "plants",
+          "category": "miscellaneous",
           "children": [
             {
               "name": "crosslinker",
@@ -362,14 +376,17 @@
     {
       "name": "animal",
       "base": "animal",
+      "category": "all",
       "children": [
         {
           "name": "polymers",
           "base": "animal",
+          "category": "polymers",
           "children": [
             {
               "name": "protein",
               "base": "animal",
+              "category": "polymers",
               "children": [
                 {
                   "name": "albumin",
@@ -432,6 +449,7 @@
             {
               "name": "resins",
               "base": "animal",
+              "category": "polymers",
               "children": [
                 {
                   "name": "resin animal",
@@ -448,6 +466,7 @@
         {
           "name": "mordants, tannins, binders, redox agents",
           "base": "animal",
+          "category": "mordants, tannins, binders, redox agents",
           "children": [
             {
               "name": "tannins (animal)",
@@ -478,6 +497,7 @@
         {
           "name": "growth media",
           "base": "animal",
+          "category": "growth media",
           "children": [
             {
               "name": "solidifying agent",
@@ -540,6 +560,7 @@
         {
           "name": "plasticizers",
           "base": "animal",
+          "category": "plasticizers",
           "children": [
             {
               "name": "poylols",
@@ -578,6 +599,7 @@
         {
           "name": "pigments",
           "base": "animal",
+          "category": "pigments",
           "children": [
             {
               "name": "animal",
@@ -592,6 +614,7 @@
         {
           "name": "fillers",
           "base": "animal",
+          "category": "fillers",
           "children": [
             {
               "name": "animal",
@@ -606,6 +629,7 @@
         {
           "name": "miscellaneous",
           "base": "animal",
+          "category": "miscellaneous",
           "children": [
             {
               "name": "pH buffer",
@@ -622,14 +646,17 @@
     {
       "name": "microbial",
       "base": "microbial",
+      "category": "all",
       "children": [
         {
           "name": "polymers",
           "base": "microbial",
+          "category": "polymers",
           "children": [
             {
               "name": "polysaccharides",
               "base": "microbial",
+              "category": "polymers",
               "children": [
                 {
                   "name": "cellulose",
@@ -670,6 +697,7 @@
         {
           "name": "mordants, tannins, binders, redox agents",
           "base": "microbial",
+          "category": "mordants, tannins, binders, redox agents",
           "children": [
             {
               "name": "reduction & oxidation (redox for indigo dye)",
@@ -684,6 +712,7 @@
         {
           "name": "growth media",
           "base": "microbial",
+          "category": "growth media",
           "children": [
             {
               "name": "enzyme exciters (e.g. vitamin B)",
@@ -706,6 +735,7 @@
         {
           "name": "plasticizers",
           "base": "microbial",
+          "category": "plasticizers",
           "children": [
             {
               "name": "poylols",
@@ -720,6 +750,7 @@
         {
           "name": "pigments",
           "base": "microbial",
+          "category": "pigments",
           "children": [
             {
               "name": "micro-algae",
@@ -751,6 +782,7 @@
         {
           "name": "pH modifier",
           "base": "microbial",
+          "category": "pH modifiers",
           "children": [
             {
               "name": "acidic",
@@ -765,6 +797,7 @@
         {
           "name": "miscellaneous",
           "base": "microbial",
+          "category": "miscellaneous",
           "children": [
             {
               "name": "crosslinker",
@@ -789,17 +822,20 @@
     {
       "name": "chemical compounds",
       "base": "chemical compounds",
+      "category": "all",
       "children": [
         {
           "name": "polymers",
           "base": "chemical compounds",
+          "category": "polymers",
           "children": [
             {
               "name": "polysaccharides",
               "base": "chemical compounds",
+              "category": "polymers",
               "children": [
                 {
-                  "name": "chemically modified cellolose",
+                  "name": "chemically modified cellulose",
                   "category": "polymers",
                   "subcategory": "polysaccharides",
                   "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
@@ -813,6 +849,7 @@
         {
           "name": "surfactants",
           "base": "chemical compounds",
+          "category": "surfactants",
           "children": [
             {
               "name": "detergents",
@@ -843,6 +880,7 @@
         {
           "name": "mordants, tannins, binders, redox agents",
           "base": "chemical compounds",
+          "category": "mordants, tannins, binders, redox agents",
           "children": [
             {
               "name": "chemical mordants",
@@ -858,6 +896,7 @@
         {
           "name": "solvents and vehicles",
           "base": "chemical compounds",
+          "category": "solvents and vehicles",
           "children": [
             {
               "name": "alcohols",
@@ -874,20 +913,13 @@
               "functions": "['dissolve a substance into a liquid','extract a substance into a liquid']",
               "base": "chemical compounds",
               "origin": "['aceton']"
-            },
-            {
-              "name": "chemically modified cellolose",
-              "category": "polymers",
-              "subcategory": "polysaccharides",
-              "functions": "['give strength', 'adhesion', 'coating', 'binder', 'growth substrate', 'enforcement or scaffold in composites']",
-              "base": "chemical compounds",
-              "origin": "['Carboxy Methyl Cellulose (CMC)', 'Methyl Cellulose (MC)']"
             }
           ]
         },
         {
           "name": "growth media",
           "base": "chemical compounds",
+          "category": "growth media",
           "children": [
             {
               "name": "pH modifier",
@@ -902,6 +934,7 @@
         {
           "name": "plasticizers",
           "base": "chemical compounds",
+          "category": "plasticizers",
           "children": [
             {
               "name": "poypols",
@@ -924,6 +957,7 @@
         {
           "name": "pH modifier",
           "base": "chemical compounds",
+          "category": "pH modifiers",
           "children": [
             {
               "name": "acidic",
@@ -946,6 +980,7 @@
         {
           "name": "miscellaneous",
           "base": "chemical compounds",
+          "category": "miscellaneous",
           "children": [
             {
               "name": "crosslinker",
@@ -978,10 +1013,12 @@
     {
       "name": "inorganic",
       "base": "inorganic",
+      "category": "all",
       "children": [
         {
           "name": "mordants, tannins, binders, redox agents",
           "base": "inorganic",
+          "category": "mordants, tannins, binders, redox agents",
           "children": [
             {
               "name": "mineral mordants",
@@ -1012,6 +1049,7 @@
         {
           "name": "growth media",
           "base": "inorganic",
+          "category": "growth media",
           "children": [
             {
               "name": "isotonic agent",
@@ -1026,6 +1064,7 @@
         {
           "name": "plasticizers",
           "base": "inorganic",
+          "category": "plasticizers",
           "children": [
             {
               "name": "water",
@@ -1040,6 +1079,7 @@
         {
           "name": "pigments",
           "base": "inorganic",
+          "category": "pigments",
           "children": [
             {
               "name": "clays & earth",
@@ -1070,6 +1110,7 @@
         {
           "name": "fillers",
           "base": "inorganic",
+          "category": "fillers",
           "children": [
             {
               "name": "powders",
@@ -1084,6 +1125,7 @@
         {
           "name": "pH modifier",
           "base": "inorganic",
+          "category": "pH modifiers",
           "children": [
             {
               "name": "alkaline",
@@ -1106,6 +1148,7 @@
         {
           "name": "miscellaneous",
           "base": "inorganic",
+          "category": "miscellaneous",
           "children": [
             {
               "name": "pH buffers",
@@ -1122,14 +1165,17 @@
     {
       "name": "petrol-based",
       "base": "petrol-based",
+      "category": "all",
       "children": [
         {
           "name": "polymers",
           "base": "petrol-based",
+          "category": "polymers",
           "children": [
             {
               "name": "resins",
               "base": "petrol-based",
+              "category": "polymers",
               "children": [
                 {
                   "name": "petrol-based resins",
@@ -1144,6 +1190,7 @@
             {
               "name": "elastomers & rubbers",
               "base": "petrol-based",
+              "category": "polymers",
               "children": [
                 {
                   "name": "elastomer (synthetic)",
@@ -1160,6 +1207,7 @@
         {
           "name": "plasticizers",
           "base": "petrol-based",
+          "category": "plasticizers",
           "children": [
             {
               "name": "poylols",
