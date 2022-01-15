@@ -9,12 +9,12 @@ var diagonal = d3.svg.diagonal().projection(function (d) {
 
 var div = d3.select("#info").style("opacity", 0);
 
-div.on("mouseout", function (d) {
-  div.transition().duration("50").attr("opacity", "1");
+// div.on("mouseout", function (d) {
+//   div.transition().duration("50").attr("opacity", "1");
 
-  div.transition().duration(500).style("opacity", 0);
-  div.attr("class", "hide");
-});
+//   div.transition().duration(500).style("opacity", 0);
+//   div.attr("class", "hide");
+// });
 
 // Creates sources <svg> element
 const svginfo = d3.select("#shapes");
@@ -112,6 +112,34 @@ function makeDendogram(data) {
       div.transition().duration(200).style("opacity", 1);
       d3.select("#name").text(`Name: ${d.name}`);
       d3.select("#functions").text(`Functions: ${d.functions}`);
+
+      var example = d3.select("#example");
+
+      var newData = data.filter(function (data) {
+        d3.select("#example").selectAll("text").remove();
+        console.log(d.category);
+        return (data.category == d.category) & (data.base == d.base);
+      });
+
+      example
+        .selectAll("text")
+        .data(newData)
+        .enter()
+        .append("text")
+        .attr("fill", "#000")
+        .text(function (d) {
+          return d.name + d.category;
+        });
+
+      console.log(newData);
+
+      // newData.forEach(function (d) {
+      //   d3.select("#exemple")
+      //     .data(newData)
+      //     .enter()
+      //     .text(`Name: ${newData.name}`);
+      //   // example.enter().text(`Name: ${d.name}`);
+      // });
 
       svginfo
         .append("circle")
