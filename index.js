@@ -1,6 +1,6 @@
 var margin = { top: 20, right: 120, bottom: 20, left: 120 },
   width = 960 - margin.right - margin.left,
-  height = 1800 - margin.top - margin.bottom;
+  height = 2100 - margin.top - margin.bottom;
 var cluster = d3.layout.cluster().size([height, width - 200]);
 
 var diagonal = d3.svg.diagonal().projection(function (d) {
@@ -90,12 +90,13 @@ function makeDendogram(data) {
   link.enter().append("path").attr("class", "link").attr("d", diagonal);
 
   var node = svg.selectAll(".node").data(data);
-
+  console.log(data);
   node
     .enter()
     .append("g")
     .attr("class", "node")
     .attr("transform", function (d) {
+      console.log(d);
       return "translate(" + d.y + "," + d.x + ")";
     });
 
