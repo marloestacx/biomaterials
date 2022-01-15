@@ -47,6 +47,32 @@ function getData() {
         return d;
       }); // corresponding value returned by the button
 
+    // List of groups (here I have one group per column)
+    var allGroupCat = d3
+      .map(data, function (d) {
+        return d.category;
+      })
+      .keys();
+
+    console.log(allGroup);
+
+    // add the options to the button
+    d3.select("#selectCat")
+      .selectAll("myOptions")
+      .data(allGroupCat)
+      .enter()
+      .append("option")
+      .text(function (d) {
+        if (d != "undefined") {
+          return d;
+        }
+      }) // text showed in the menu
+      .attr("value", function (d) {
+        if (d != "undefined") {
+          return d;
+        }
+      }); // corresponding value returned by the button
+
     makeDendogram(data);
   });
 }
@@ -185,7 +211,19 @@ function makeDendogram(data) {
     // node.exit().remove();
     update(selectedOption);
   });
+
+  // When the button is changed, run the updateChart function
+  d3.select("#selectCat").on("change", function (d) {
+    // d3.select("svg").remove();
+    // recover the option that has been chosen
+    const selectedCat = d3.select(this).property("value");
+
+    // node.exit().remove();
+    updateCat(selectedCat);
+  });
 }
+
+var dataFilter;
 
 function update(selectedGroup) {
   d3.selectAll("svg").remove();
@@ -193,7 +231,7 @@ function update(selectedGroup) {
   d3.json("data.json", function (error, root) {
     var newData = cluster.nodes(root);
 
-    var dataFilter = newData.filter(function (d) {
+    dataFilter = newData.filter(function (d) {
       return d.base == selectedGroup;
     });
 
@@ -204,4 +242,23 @@ function update(selectedGroup) {
     makeDendogram(dataFilter);
     console.log(dataFilter);
   });
+}
+
+function updateCat(selectedCat) {
+  d3.selectAll("svg").remove();
+
+  // d3.json("data.json", function (error, root) {
+  //   var newData = cluster.nodes(root);
+
+  newData = dataFilter.filter(function (d) {
+    return d.category == selectedCat;
+  });
+
+  if (selectedCat == "all") {
+    newData = dataFilter;
+  }
+
+  makeDendogram(newData);
+  console.log(newData);
+  // });
 }
