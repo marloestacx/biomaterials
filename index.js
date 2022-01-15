@@ -19,11 +19,11 @@ var div = d3.select("#info").style("opacity", 0);
 // Creates sources <svg> element
 const svginfo = d3.select("#shapes");
 
+var data;
+
 function getData() {
   d3.json("data.json", function (error, root) {
-    var data = cluster.nodes(root);
-
-    // console.log(data);
+    data = cluster.nodes(root);
 
     // List of groups (here I have one group per column)
     var allGroup = d3
@@ -31,8 +31,6 @@ function getData() {
         return d.base;
       })
       .keys();
-
-    console.log(allGroup);
 
     // add the options to the button
     d3.select("#selectButton")
@@ -53,8 +51,6 @@ function getData() {
         return d.category;
       })
       .keys();
-
-    console.log(allGroup);
 
     // add the options to the button
     d3.select("#selectCat")
@@ -86,8 +82,6 @@ function makeDendogram(data) {
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  console.log(data);
 
   var links = cluster.links(data);
 
@@ -133,6 +127,7 @@ function makeDendogram(data) {
       return d.children ? -8 : 8;
     })
     .attr("dy", 3)
+    //popup
     .on("click", function (d) {
       d3.select(this).transition().duration("50").attr("opacity", ".85");
       div.transition().duration(200).style("opacity", 1);
@@ -143,7 +138,6 @@ function makeDendogram(data) {
 
       var newData = data.filter(function (data) {
         d3.select("#example").selectAll("text").remove();
-        console.log(d.category);
         return (data.category == d.category) & (data.base == d.base);
       });
 
@@ -156,8 +150,6 @@ function makeDendogram(data) {
         .text(function (d) {
           return d.name + d.category;
         });
-
-      console.log(newData);
 
       // newData.forEach(function (d) {
       //   d3.select("#exemple")
@@ -240,25 +232,27 @@ function update(selectedGroup) {
     }
 
     makeDendogram(dataFilter);
-    console.log(dataFilter);
   });
 }
 
 function updateCat(selectedCat) {
   d3.selectAll("svg").remove();
 
-  // d3.json("data.json", function (error, root) {
-  //   var newData = cluster.nodes(root);
+  console.log(dataFilter);
 
-  newData = dataFilter.filter(function (d) {
-    return d.category == selectedCat;
-  });
+  if (dataFilter == null) {
+    newData = data.filter(function (d) {
+      return d.category == selectedCat;
+    });
+  } else {
+    newData = dataFilter.filter(function (d) {
+      return d.category == selectedCat;
+    });
+  }
 
   if (selectedCat == "all") {
     newData = dataFilter;
   }
 
   makeDendogram(newData);
-  console.log(newData);
-  // });
 }
