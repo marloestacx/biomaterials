@@ -11,8 +11,14 @@
     <header>
       <h1>Morphological Chart</h1>
       <h2>Biomaterial toolkit</h2>
-      <select id="selectButton"></select>
-      <select id="selectCat"></select>
+      <div class="filter">
+        <select id="selectButton">
+          <option value="" disabled selected>Base</option>
+        </select>
+        <select id="selectCat">
+          <option value="" disabled selected>Category</option>
+        </select>
+      </div>
     </header>
     <div id="info" class="hide">
       <h1 id="name"></h1>
