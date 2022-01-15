@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 }
+body {
+  font-family: "Calibri", Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
 header {
   background-color: #f8f4e8;
   padding: 1em;
@@ -29,15 +33,13 @@ select {
 .node {
   cursor: pointer;
 }
-
+option:empty {
+  display: none;
+}
 .node circle {
   fill: #fff;
   stroke: steelblue;
   stroke-width: 1.5px;
-}
-
-.node text {
-  font: 10px sans-serif;
 }
 
 .link {
@@ -74,4 +76,11 @@ select {
 .info circle {
   stroke: steelblue;
   stroke-width: 3px;
+}
+
+.filter {
+  width: "500px";
+  margin: auto;
+  text-align: center;
+  padding: 0.5em;
 }
