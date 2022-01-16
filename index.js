@@ -16,6 +16,13 @@ var div = d3.select("#info").style("opacity", 0);
 //   div.attr("class", "hide");
 // });
 
+d3.select("#close").on("click", close);
+
+// function close() {
+//   console.log("click");
+//   div.attr("class", "hide");
+// }
+
 // Creates sources <svg> element
 const svginfo = d3.select("#shapes");
 
@@ -90,13 +97,11 @@ function makeDendogram(data) {
   link.enter().append("path").attr("class", "link").attr("d", diagonal);
 
   var node = svg.selectAll(".node").data(data);
-  console.log(data);
   node
     .enter()
     .append("g")
     .attr("class", "node")
     .attr("transform", function (d) {
-      console.log(d);
       return "translate(" + d.y + "," + d.x + ")";
     });
 
@@ -129,65 +134,8 @@ function makeDendogram(data) {
     })
     .attr("dy", 3)
     //popup
-    .on("click", function (d) {
-      d3.select(this).transition().duration("50").attr("opacity", ".85");
-      div.transition().duration(200).style("opacity", 1);
-      d3.select("#name").text(`Name: ${d.name}`);
-      d3.select("#functions").text(`Functions: ${d.functions}`);
+    .on("click", click)
 
-      var example = d3.select("#example");
-
-      var newData = data.filter(function (data) {
-        d3.select("#example").selectAll("text").remove();
-        return (data.category == d.category) & (data.base == d.base);
-      });
-
-      example
-        .selectAll("text")
-        .data(newData)
-        .enter()
-        .append("text")
-        .attr("fill", "#000")
-        .text(function (d) {
-          return d.name + d.category;
-        });
-
-      // newData.forEach(function (d) {
-      //   d3.select("#exemple")
-      //     .data(newData)
-      //     .enter()
-      //     .text(`Name: ${newData.name}`);
-      //   // example.enter().text(`Name: ${d.name}`);
-      // });
-
-      svginfo
-        .append("circle")
-        .attr("cx", 300)
-        .attr("cy", 80)
-        .attr("r", 37.5)
-        .style("fill", function () {
-          if (d.base === "plants" || d.headbase === "plants") {
-            return "green";
-          } else if (d.base === "animal" || d.headbase === "animal") {
-            return "red";
-          } else if (
-            d.base === "petrol-based" ||
-            d.headbase === "petrol-based"
-          ) {
-            return "black";
-          } else if (d.base === "microbial" || d.headbase === "microbial") {
-            return "lightgreen";
-          } else if (d.base === "inorganic" || d.headbase === "inorganic") {
-            return "orange";
-          } else if (
-            d.base === "chemical compounds" ||
-            d.headbase === "chemical compounds"
-          ) {
-            return "yellow";
-          }
-        });
-      div.attr("class", "info");
-    })
     .style("text-anchor", function (d) {
       return d.children ? "end" : "start";
     })
@@ -214,12 +162,102 @@ function makeDendogram(data) {
     // node.exit().remove();
     updateCat(selectedCat);
   });
+
+  function click(d) {
+    div
+      .transition()
+      .duration("50")
+      .attr("opacity", ".85")
+      .style("opacity", 1)
+      .style("left", d.pageX + "px")
+      .style("top", d.pageY - 28 + "px");
+    d3.select("#name").text(`Name: ${d.name}`);
+    d3.select("#category").text(`${d.base} ➤ ${d.category}`);
+    d3.select("#functions").text(`Functions: ${d.functions}`);
+
+    d3.select("#close")
+      .text("close")
+      .on("click", function () {
+        console.log("click");
+        div.attr("class", "hide");
+      });
+
+    var newData = data.filter(function (data) {
+      d3.selectAll(".card").remove();
+      // d3.select(".card").selectAll("text").remove();
+      // console.log(data.category == d.category);
+      return (data.category == d.category) & (data.base == d.base);
+    });
+
+    // var example = d3.select("#example").append("div");
+
+    // var detail = example.selectAll("div").data(newData);
+
+    // detail
+    //   .enter()
+    //   .append("text")
+    //   .attr("fill", "#000")
+    //   .text(function (d) {
+    //     return d.name + " " + d.category;
+    //   });
+
+    var example = d3.select("#example");
+    var extrainfo = example.selectAll("text").data(newData);
+    // .attr("width", 500)
+    // .attr("height", 500);
+
+    extrainfo
+      .enter()
+      .append("div")
+      .attr("class", "card")
+      .attr("width", 370)
+      .attr("height", 140)
+      .append("text")
+      .attr("class", "name")
+      .on("click", click)
+      // .attr("width", 60)
+      // .attr("height", 60)
+      .attr("width", "60px")
+      .attr("height", "60px")
+      .text(function (d) {
+        return d.name;
+      });
+
+    extrainfo.append("text").text(function (d) {
+      return d.category;
+    });
+
+    svginfo
+      .append("circle")
+      .attr("cx", 300)
+      .attr("cy", 80)
+      .attr("r", 37.5)
+      .style("fill", function () {
+        if (d.base === "plants" || d.headbase === "plants") {
+          return "green";
+        } else if (d.base === "animal" || d.headbase === "animal") {
+          return "red";
+        } else if (d.base === "petrol-based" || d.headbase === "petrol-based") {
+          return "black";
+        } else if (d.base === "microbial" || d.headbase === "microbial") {
+          return "lightgreen";
+        } else if (d.base === "inorganic" || d.headbase === "inorganic") {
+          return "orange";
+        } else if (
+          d.base === "chemical compounds" ||
+          d.headbase === "chemical compounds"
+        ) {
+          return "yellow";
+        }
+      });
+    div.attr("class", "info");
+  }
 }
 
 var dataFilter;
 
 function update(selectedGroup) {
-  d3.selectAll("svg").remove();
+  d3.select("#dataviz").selectAll("svg").remove();
 
   d3.json("data.json", function (error, root) {
     var newData = cluster.nodes(root);
@@ -237,9 +275,7 @@ function update(selectedGroup) {
 }
 
 function updateCat(selectedCat) {
-  d3.selectAll("svg").remove();
-
-  console.log(dataFilter);
+  d3.select("#dataviz").selectAll("svg").remove();
 
   if (dataFilter == null) {
     newData = data.filter(function (d) {
