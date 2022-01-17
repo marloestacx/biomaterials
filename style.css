@@ -99,6 +99,7 @@ option:empty {
 #close {
   text-align: right;
   padding: 1em;
+  padding-right: 3em;
 }
 
 #example {
