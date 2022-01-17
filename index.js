@@ -174,7 +174,6 @@ function makeDendogram(data) {
       d3.select("#origin").text(" ");
     }
 
-    console.log(d);
     if (d.functions != null) {
       d3.select("#functions").text(`${d.functions}`);
     } else if (d.children[0].functions != null) {
@@ -185,8 +184,6 @@ function makeDendogram(data) {
       d3.select("#functions").text(" ");
     }
 
-    // d3.select("#functions").text(`${d.origin}`);
-
     d3.select("#close")
       .text("close")
       .on("click", function () {
@@ -195,23 +192,25 @@ function makeDendogram(data) {
 
     var newData = data.filter(function (data) {
       d3.selectAll(".card").remove();
-      return (data.category == d.category) & (data.base == d.base);
-      // }
+      console.log(d);
+      return (
+        (data.category == d.category) &
+        (data.base == d.base) &
+        (data.name != d.name)
+      );
     });
 
-    // console.log(newData.name = d.name);
-
-    // if (newData.name != newData.category)
     //cards
     var example = d3.select("#example");
     var extrainfo = example.selectAll("text").data(newData);
-
+    var id;
     extrainfo
       .enter()
       .append("div")
       .attr("class", "card")
       // .attr("id", function (b) {
-      //   return b.name;
+      //   id = newData.findIndex((item) => item.name === b.name);
+      //   return id;
       // })
       .attr("width", 370)
       .attr("height", 140)
@@ -222,11 +221,11 @@ function makeDendogram(data) {
       .attr("height", "60px")
       .text(function (e) {
         return e.name;
-        // if (d.name != e.name) {
-        //   return e.name;
-        // } else {
-        //   // d3.select("#" + e.name).remove();
-        // }
+        //   if (d.name != e.name) {
+        //     return e.name;
+        //   } else {
+        //     d3.select('[id="' + id + '"]').remove();
+        //   }
       });
 
     extrainfo.append("text").text(function (d) {
