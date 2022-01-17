@@ -9,19 +9,7 @@ var diagonal = d3.svg.diagonal().projection(function (d) {
 
 var div = d3.select("#info").style("opacity", 0);
 
-// div.on("mouseout", function (d) {
-//   div.transition().duration("50").attr("opacity", "1");
-
-//   div.transition().duration(500).style("opacity", 0);
-//   div.attr("class", "hide");
-// });
-
 d3.select("#close").on("click", close);
-
-// function close() {
-//   console.log("click");
-//   div.attr("class", "hide");
-// }
 
 // Creates sources <svg> element
 const svginfo = d3.select("#shapes");
@@ -169,62 +157,77 @@ function makeDendogram(data) {
       .duration("50")
       .attr("opacity", ".85")
       .style("opacity", 1)
-      .style("left", d.pageX + "px")
-      .style("top", d.pageY - 28 + "px");
-    d3.select("#name").text(`Name: ${d.name}`);
+      .style("top", function () {
+        if (d.name == d.category) {
+          return d.x + "px";
+        } else {
+          return d.parent.x + "px";
+        }
+      });
+    // .style("left", d.x + "px")
+    d3.select("#name").text(`${d.name}`);
     d3.select("#category").text(`${d.base} ➤ ${d.category}`);
-    d3.select("#functions").text(`Functions: ${d.functions}`);
+
+    if (d.origin != null) {
+      d3.select("#origin").text(`${d.origin}`);
+    } else {
+      d3.select("#origin").text(" ");
+    }
+
+    if (d.functions != null) {
+      d3.select("#functions").text(`${d.functions}`);
+    } else {
+      d3.select("#functions").text(" ");
+    }
+
+    // d3.select("#functions").text(`${d.origin}`);
 
     d3.select("#close")
       .text("close")
       .on("click", function () {
-        console.log("click");
         div.attr("class", "hide");
       });
 
     var newData = data.filter(function (data) {
       d3.selectAll(".card").remove();
-      // d3.select(".card").selectAll("text").remove();
-      // console.log(data.category == d.category);
       return (data.category == d.category) & (data.base == d.base);
+      // }
     });
 
-    // var example = d3.select("#example").append("div");
+    // console.log(newData.name = d.name);
 
-    // var detail = example.selectAll("div").data(newData);
-
-    // detail
-    //   .enter()
-    //   .append("text")
-    //   .attr("fill", "#000")
-    //   .text(function (d) {
-    //     return d.name + " " + d.category;
-    //   });
-
+    // if (newData.name != newData.category)
+    //cards
     var example = d3.select("#example");
     var extrainfo = example.selectAll("text").data(newData);
-    // .attr("width", 500)
-    // .attr("height", 500);
 
     extrainfo
       .enter()
       .append("div")
       .attr("class", "card")
+      // .attr("id", function (b) {
+      //   return b.name;
+      // })
       .attr("width", 370)
       .attr("height", 140)
       .append("text")
       .attr("class", "name")
       .on("click", click)
-      // .attr("width", 60)
-      // .attr("height", 60)
       .attr("width", "60px")
       .attr("height", "60px")
-      .text(function (d) {
-        return d.name;
+      .text(function (e) {
+        return e.name;
+        // if (d.name != e.name) {
+        //   return e.name;
+        // } else {
+        //   // d3.select("#" + e.name).remove();
+        // }
       });
 
     extrainfo.append("text").text(function (d) {
-      return d.category;
+      if (d.name !== d.category) {
+        return d.category;
+      }
     });
 
     svginfo
@@ -257,7 +260,13 @@ function makeDendogram(data) {
 var dataFilter;
 
 function update(selectedGroup) {
-  d3.select("#dataviz").selectAll("svg").remove();
+  d3.select("#dataviz")
+    .selectAll("svg")
+    // .transition() // apply a transition
+    // .ease("easeLinear") // control the speed of the transition
+    // .duration(400)
+    // .style("opacity", 0)
+    .remove();
 
   d3.json("data.json", function (error, root) {
     var newData = cluster.nodes(root);
