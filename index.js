@@ -174,8 +174,13 @@ function makeDendogram(data) {
       d3.select("#origin").text(" ");
     }
 
+    console.log(d);
     if (d.functions != null) {
       d3.select("#functions").text(`${d.functions}`);
+    } else if (d.children[0].functions != null) {
+      d3.select("#functions").text(`${d.children[0].functions}`);
+    } else if (d.children[0].children[0].functions != null) {
+      d3.select("#functions").text(`${d.children[0].children[0].functions}`);
     } else {
       d3.select("#functions").text(" ");
     }
@@ -225,7 +230,7 @@ function makeDendogram(data) {
       });
 
     extrainfo.append("text").text(function (d) {
-      if (d.name !== d.category) {
+      if ((d.name !== d.category) & (d.parent.base != "all")) {
         return d.category;
       }
     });
