@@ -1,1 +1,16 @@
-# biomaterials
+# Biomaterials
+
+
+## Installation
+
+Clone this repository
+
+`https://github.com/marloestacx/biomaterials.git`
+
+Use Live Server to run the project
+
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+
+## License
+
+Author: Marloes Tacx, license by [MIT](https://github.com/lottekoblens/mchart/blob/master/LICENSE)
