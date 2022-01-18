@@ -110,6 +110,11 @@ option:empty {
   text-align: right;
 }
 
+#origin {
+  margin-left: 6em;
+  margin-right: 6em;
+}
+
 .card {
   display: flex;
   border-style: solid;
