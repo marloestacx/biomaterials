@@ -151,6 +151,7 @@ function makeDendogram(data) {
     updateCat(selectedCat);
   });
 
+  //click on name
   function click(d) {
     div
       .transition()
@@ -208,10 +209,6 @@ function makeDendogram(data) {
       .enter()
       .append("div")
       .attr("class", "card")
-      // .attr("id", function (b) {
-      //   id = newData.findIndex((item) => item.name === b.name);
-      //   return id;
-      // })
       .attr("width", 370)
       .attr("height", 140)
       .append("text")
@@ -221,11 +218,6 @@ function makeDendogram(data) {
       .attr("height", "60px")
       .text(function (e) {
         return e.name;
-        //   if (d.name != e.name) {
-        //     return e.name;
-        //   } else {
-        //     d3.select('[id="' + id + '"]').remove();
-        //   }
       });
 
     extrainfo.append("text").text(function (d) {
@@ -263,6 +255,7 @@ function makeDendogram(data) {
 
 var dataFilter;
 
+//update base filter
 function update(selectedGroup) {
   d3.select("#dataviz")
     .selectAll("svg")
@@ -287,6 +280,7 @@ function update(selectedGroup) {
   });
 }
 
+//update category filter
 function updateCat(selectedCat) {
   d3.select("#dataviz").selectAll("svg").remove();
 
