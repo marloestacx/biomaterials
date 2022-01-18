@@ -3,13 +3,13 @@ var margin = { top: 20, right: 120, bottom: 20, left: 120 },
   height = 2100 - margin.top - margin.bottom;
 var cluster = d3.layout.cluster().size([height, width - 200]);
 
-var diagonal = d3.svg.diagonal().projection(function (d) {
-  return [d.y, d.x];
-});
+// var diagonal = d3.svg.diagonal().projection(function (d) {
+//   return [d.y, d.x];
+// });
 
 var div = d3.select("#info").style("opacity", 0);
 
-d3.select("#close").on("click", close);
+// d3.select("#close").on("click", close);
 
 // Creates sources <svg> element
 const svginfo = d3.select("#shapes");
@@ -17,7 +17,7 @@ const svginfo = d3.select("#shapes");
 var data;
 
 function getData() {
-  d3.json("data.json", function (error, root) {
+  d3.json("data.json", function (root) {
     data = cluster.nodes(root);
 
     // List of groups (here I have one group per column)
@@ -70,6 +70,11 @@ function getData() {
 getData();
 
 function makeDendogram(data) {
+  var diagonal = d3.svg.diagonal().projection(function (d) {
+    // console.log(d);
+    return [d.y, d.x];
+  });
+  console.log(diagonal);
   var svg = d3
     .select("#dataviz")
     .append("svg")
@@ -121,6 +126,7 @@ function makeDendogram(data) {
       return d.children ? -8 : 8;
     })
     .attr("dy", 3)
+    .attr("class", "text")
     //popup
     .on("click", click)
 
@@ -130,6 +136,23 @@ function makeDendogram(data) {
     .text(function (d) {
       return d.name;
     });
+
+  d3.select("button").on("click", function () {
+    console.log(data);
+
+    d3.selectAll(".text").style("fill", "black");
+
+    var txtName = d3.select("#txtName").node().value;
+
+    var test = d3.selectAll(".text").filter(function (d) {
+      return txtName == d.name;
+    });
+
+    test.style("fill", "red");
+
+    // filter(txtName == data.name);
+    console.log(test);
+  });
 
   // When the button is changed, run the updateChart function
   d3.select("#selectButton").on("change", function (d) {
@@ -193,7 +216,6 @@ function makeDendogram(data) {
 
     var newData = data.filter(function (data) {
       d3.selectAll(".card").remove();
-      console.log(d);
       return (
         (data.category == d.category) &
         (data.base == d.base) &
@@ -265,12 +287,13 @@ function update(selectedGroup) {
     // .style("opacity", 0)
     .remove();
 
-  d3.json("data.json", function (error, root) {
-    var newData = cluster.nodes(root);
+  d3.json("data.json", function (root) {
+    // var newData = cluster.nodes(root);
 
-    dataFilter = newData.filter(function (d) {
+    var newData = root.children.filter(function (d) {
       return d.base == selectedGroup;
     });
+    dataFilter = cluster.nodes(newData[0]);
 
     if (selectedGroup == "all") {
       dataFilter = newData;
