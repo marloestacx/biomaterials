@@ -17,18 +17,20 @@
     <header>
       <h1>Morphological Chart</h1>
       <h2>Biomaterial toolkit</h2>
-      <textarea
-        id="txtName"
-        name="txt-Name"
-        placeholder="Search for something.."
-      ></textarea>
-      <button>Search</button>
+      <div class="search">
+        <textarea
+          id="txtName"
+          name="txt-Name"
+          placeholder="Search for an ingredient..."
+        ></textarea>
+        <button>Search</button>
+      </div>
       <div class="filter">
         <select id="selectButton">
-          <option value="" disabled selected>Base</option>
+          <option value="" disabled selected>Category</option>
         </select>
         <select id="selectCat">
-          <option value="" disabled selected>Category</option>
+          <option value="" disabled selected>Sub-category</option>
         </select>
       </div>
     </header>
@@ -37,7 +39,7 @@
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="371"
+        width="310"
         height="473"
         viewBox="0 0 371 473"
         id="shapes"
@@ -85,12 +87,15 @@
       </svg>
       <div class="container">
         <div class="infoitem">
-          <p id="category"></p>
+          <div class="category"></div>
           <h1 id="name"></h1>
-          <p id="origin"></p>
-          <p id="functions"></p>
+          <div class="subtext">
+            <p id="origin"></p>
+            <p id="functionstitle">Functions</p>
+            <p id="functions"></p>
+          </div>
         </div>
-        <div id="example"></div>
+        <div id="cards"></div>
       </div>
     </div>
     <div id="dataviz"></div>

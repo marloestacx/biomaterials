@@ -15,6 +15,7 @@ var div = d3.select("#info").style("opacity", 0);
 const svginfo = d3.select("#shapes");
 
 var data;
+var selectedOption;
 
 function getData() {
   d3.json("data.json", function (root) {
@@ -156,9 +157,8 @@ function makeDendogram(data) {
 
   // When the button is changed, run the updateChart function
   d3.select("#selectButton").on("change", function (d) {
-    // d3.select("svg").remove();
     // recover the option that has been chosen
-    const selectedOption = d3.select(this).property("value");
+    selectedOption = d3.select(this).property("value");
 
     // node.exit().remove();
     update(selectedOption);
@@ -166,7 +166,6 @@ function makeDendogram(data) {
 
   // When the button is changed, run the updateChart function
   d3.select("#selectCat").on("change", function (d) {
-    // d3.select("svg").remove();
     // recover the option that has been chosen
     const selectedCat = d3.select(this).property("value");
 
@@ -188,9 +187,20 @@ function makeDendogram(data) {
           return d.parent.x + "px";
         }
       });
+
+    d3.select(".category").select("img").remove();
+    d3.select(".category").select("p").remove();
+    //icon
+    d3.select(".category")
+      .append("img")
+      .attr("src", "images/" + d.base + ".svg")
+      .attr("width", 40)
+      .attr("height", 40);
+
+    // div.append("svg:image").attr("xlink:href", "images/plants.svg");
     // .style("left", d.x + "px")
     d3.select("#name").text(`${d.name}`);
-    d3.select("#category").text(`${d.base} ➤ ${d.category}`);
+    d3.select(".category").append("p").text(`${d.base} ➤ ${d.category}`);
 
     if (d.origin != null) {
       d3.select("#origin").text(`${d.origin}`);
@@ -224,8 +234,8 @@ function makeDendogram(data) {
     });
 
     //cards
-    var example = d3.select("#example");
-    var extrainfo = example.selectAll("text").data(newData);
+    var cards = d3.select("#cards");
+    var extrainfo = cards.selectAll("text").data(newData);
     var id;
     extrainfo
       .enter()
@@ -293,33 +303,50 @@ function update(selectedGroup) {
     var newData = root.children.filter(function (d) {
       return d.base == selectedGroup;
     });
-    dataFilter = cluster.nodes(newData[0]);
 
     if (selectedGroup == "all") {
       dataFilter = newData;
     }
+
+    dataFilter = cluster.nodes(newData[0]);
 
     makeDendogram(dataFilter);
   });
 }
 
 //update category filter
-function updateCat(selectedCat) {
+function updateCat(selectedCat, selectedGroup) {
   d3.select("#dataviz").selectAll("svg").remove();
 
-  if (dataFilter == null) {
-    newData = data.filter(function (d) {
-      return d.category == selectedCat;
-    });
-  } else {
-    newData = dataFilter.filter(function (d) {
-      return d.category == selectedCat;
-    });
-  }
+  // if (dataFilter == null) {
+  //   newData = data.filter(function (d) {
+  //     return d.category == selectedCat;
+  //   });
+  // } else {
+  //   newData = dataFilter.filter(function (d) {
+  //     return d.category == selectedCat;
+  //   });
+  // }
 
-  if (selectedCat == "all") {
-    newData = dataFilter;
-  }
+  // if (selectedCat == "all") {
+  //   newData = dataFilter;
+  // }
 
-  makeDendogram(newData);
+  // console.log(selectedGroup);
+  // console.log(selectedCat);
+  d3.json("data.json", function (root) {
+    // var newData = cluster.nodes(root);
+
+    // console.log(root.children[0].children);
+
+    var newData = root.children.filter(function (d, index) {
+      console.log(d.children[index]);
+      return d.children[index].category == selectedCat;
+    });
+    console.log(newData);
+
+    dataFilter = cluster.nodes(newData[0]);
+
+    makeDendogram(dataFilter);
+  });
 }
