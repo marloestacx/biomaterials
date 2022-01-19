@@ -138,21 +138,19 @@ function makeDendogram(data) {
       return d.name;
     });
 
+  //search
   d3.select("button").on("click", function () {
     console.log(data);
 
-    d3.selectAll(".text").style("fill", "black");
+    d3.selectAll(".text").style("fill", "black").attr("font-weight", 100);
 
     var txtName = d3.select("#txtName").node().value;
 
-    var test = d3.selectAll(".text").filter(function (d) {
-      return txtName == d.name;
+    var search = d3.selectAll(".text").filter(function (d) {
+      return d.name.match(txtName);
     });
 
-    test.style("fill", "red");
-
-    // filter(txtName == data.name);
-    console.log(test);
+    search.style("fill", "#B7336C").attr("font-weight", 600);
   });
 
   // When the button is changed, run the updateChart function
@@ -197,10 +195,13 @@ function makeDendogram(data) {
       .attr("width", 40)
       .attr("height", 40);
 
-    // div.append("svg:image").attr("xlink:href", "images/plants.svg");
-    // .style("left", d.x + "px")
     d3.select("#name").text(`${d.name}`);
-    d3.select(".category").append("p").text(`${d.base} ➤ ${d.category}`);
+
+    if (d.category != "all") {
+      d3.select(".category").append("p").text(`${d.base} ➤ ${d.category}`);
+    } else {
+      d3.select(".category").append("p").text(`${d.base}`);
+    }
 
     if (d.origin != null) {
       d3.select("#origin").text(`${d.origin}`);
@@ -224,19 +225,23 @@ function makeDendogram(data) {
         div.attr("class", "hide");
       });
 
+    console.log(d);
     var newData = data.filter(function (data) {
       d3.selectAll(".card").remove();
-      return (
-        (data.category == d.category) &
-        (data.base == d.base) &
-        (data.name != d.name)
-      );
+      if (d.category != "all") {
+        return (
+          (data.category == d.category) &
+          (data.base == d.base) &
+          (data.name != d.name)
+        );
+      } else {
+        return (data.base == d.base) & (data.category != d.category);
+      }
     });
 
     //cards
     var cards = d3.select("#cards");
     var extrainfo = cards.selectAll("text").data(newData);
-    var id;
     extrainfo
       .enter()
       .append("div")
