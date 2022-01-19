@@ -29,6 +29,30 @@ select {
   margin: auto;
 }
 
+#selectButton {
+  background-color: rgba(226, 149, 182, 1);
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  border-radius: 25px;
+  border: none;
+  padding: 0.5em;
+  color: #ffffff;
+  font-weight: lighter;
+  letter-spacing: 1.1px;
+  font-family: "Calibri", "Open Sans", sans-serif;
+}
+
+#selectCat {
+  background-color: rgba(193, 193, 193, 1);
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  border-radius: 25px;
+  border: none;
+  padding: 0.5em;
+  color: #ffffff;
+  font-weight: lighter;
+  letter-spacing: 1.1px;
+  font-family: "Calibri", "Open Sans", sans-serif;
+}
+
 #dataviz {
   text-align: center;
 }
