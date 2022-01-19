@@ -157,6 +157,17 @@ option:empty {
 textarea {
   resize: none;
   width: 25em;
+  font-family: "Calibri", "Open Sans", sans-serif;
+  font-weight: lighter;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  border-radius: 25px;
+  padding-left: 1em;
+  border: none;
+}
+
+button {
+  font-family: "Calibri", "Open Sans", sans-serif;
+  font-weight: lighter;
 }
 
 .related {
@@ -210,7 +221,7 @@ textarea {
   border-radius: 25px;
   width: 30%;
   text-align: center;
-  /* max-height: 20%; */
+  flex-flow: column;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
   border-color: rgba(224, 224, 224, 1);
   border-style: solid;
