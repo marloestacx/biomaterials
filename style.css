@@ -225,8 +225,9 @@ button {
 
 #close {
   text-align: right;
-  padding: 1em;
   padding-right: 3em;
+  padding-top: 1em;
+  font-size: 16pt;
 }
 
 #cards {
@@ -248,7 +249,6 @@ button {
 .card {
   display: flex;
   padding: 1em;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 1em;
@@ -260,6 +260,7 @@ button {
   border-color: rgba(224, 224, 224, 1);
   border-style: solid;
   border-width: 1px;
+  height: fit-content;
 }
 
 text.name {
