@@ -53,6 +53,10 @@ select {
   font-family: "Calibri", "Open Sans", sans-serif;
 }
 
+.button {
+  width: 50px;
+}
+
 #dataviz {
   text-align: center;
 }
@@ -139,6 +143,9 @@ option:empty {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .category p {
@@ -175,7 +182,7 @@ option:empty {
   width: "500px";
   margin: auto;
   text-align: center;
-  padding: 0.5em;
+  padding-top: 0.5em;
 }
 
 textarea {
@@ -187,6 +194,9 @@ textarea {
   border-radius: 25px;
   padding-left: 1em;
   border: none;
+  height: 2em;
+  padding-top: 0.5em;
+  margin-bottom: 0.75em;
 }
 
 button {

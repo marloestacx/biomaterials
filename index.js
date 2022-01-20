@@ -139,8 +139,8 @@ function makeDendogram(data) {
     });
 
   //search
-  d3.select("button").on("click", function () {
-    console.log(data);
+  d3.select(".button").on("click", function () {
+    console.log("click");
 
     d3.selectAll(".text").style("fill", "black").attr("font-weight", 100);
 
