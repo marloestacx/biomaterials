@@ -263,6 +263,9 @@ function makeDendogram(data) {
       }
     });
 
+    //remove existing circle
+    svginfo.select("circle").remove();
+    //make new circle
     svginfo
       .append("circle")
       .attr("cx", 300)
@@ -292,56 +295,7 @@ function makeDendogram(data) {
 
 var dataFilter;
 
-//update base filter
-// function update(selectedGroup) {
-//   d3.select("#dataviz")
-//     .selectAll("svg")
-//     // .transition() // apply a transition
-//     // .ease("easeLinear") // control the speed of the transition
-//     // .duration(400)
-//     // .style("opacity", 0)
-//     .remove();
-
-//   // d3.json("data.json", function (root) {
-//   //   // var newData = cluster.nodes(root);
-
-//   //   var newData = root.children.filter(function (d) {
-//   //     return d.base == selectedGroup;
-//   //   });
-
-//   //   if (selectedGroup == "all") {
-//   //     dataFilter = newData;
-//   //   }
-
-//   //   dataFilter = cluster.nodes(newData[0]);
-
-//   //   makeDendogram(dataFilter);
-//   // });
-// }
-
-//update category filter
-// function updateCat(selectedCat, selectedGroup) {
-//   d3.select("#dataviz").selectAll("svg").remove();
-
-//   console.log(selectedGroup);
-//   console.log(selectedCat);
-//   d3.json("data.json", function (root) {
-//     // var newData = cluster.nodes(root);
-
-//     // console.log(root.children[0].children);
-
-//     var newData = root.children.filter(function (d, index) {
-//       console.log(d.children[index]);
-//       return d.children[index].category == selectedCat;
-//     });
-//     console.log(newData);
-
-//     dataFilter = cluster.nodes(newData[0]);
-
-//     makeDendogram(dataFilter);
-//   });
-// }
-
+// update catagory filter
 function update(selectedGroup) {
   d3.select("#dataviz")
     .selectAll("svg")
@@ -350,18 +304,23 @@ function update(selectedGroup) {
     // .duration(400)
     // .style("opacity", 0)
     .remove();
-  d3.json("data.json", function (error, root) {
-    var newData = cluster.nodes(root);
-    dataFilter = newData.filter(function (d) {
-      return d.base == selectedGroup;
-    });
+
+  d3.json("data.json", function (root) {
     if (selectedGroup == "all") {
-      dataFilter = newData;
+      dataFilter = data;
+    } else {
+      var newData = root.children.filter(function (d) {
+        return d.base == selectedGroup;
+      });
+      var cluster = d3.layout.cluster().size([600, width - 200]);
+      dataFilter = cluster.nodes(newData[0]);
     }
+
     makeDendogram(dataFilter);
   });
 }
 
+//update subcategory filter
 function updateCat(selectedCat) {
   d3.select("#dataviz").selectAll("svg").remove();
   if (dataFilter == null) {
