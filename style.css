@@ -2,6 +2,17 @@
   margin: 0;
   padding: 0;
 }
+
+@font-face {
+  font-family: "Calibri";
+  src: url("fonts/Calibri.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Calibri";
+  src: url("fonts/calibril.ttf") format("truetype");
+}
+
 body {
   font-family: "Calibri", "Open Sans", sans-serif;
   font-weight: lighter;
@@ -18,11 +29,13 @@ h1 {
   margin-top: 0;
   text-align: center;
   font-weight: 300;
+  letter-spacing: 2.1px;
 }
 
 h2 {
   text-align: center;
   font-weight: 300;
+  letter-spacing: 2.1px;
 }
 
 select {
@@ -39,6 +52,7 @@ select {
   font-weight: lighter;
   letter-spacing: 1.1px;
   font-family: "Calibri", "Open Sans", sans-serif;
+  -webkit-appearance: none;
 }
 
 #selectCat {
@@ -51,6 +65,7 @@ select {
   font-weight: lighter;
   letter-spacing: 1.1px;
   font-family: "Calibri", "Open Sans", sans-serif;
+  -webkit-appearance: none;
 }
 
 .button {
@@ -67,9 +82,12 @@ option:empty {
   display: none;
 }
 .node circle {
-  fill: #fff;
-  stroke: steelblue;
+  fill: grey;
   stroke-width: 1.5px;
+}
+
+.node text {
+  letter-spacing: 1.1px;
 }
 
 .link {
@@ -153,7 +171,7 @@ option:empty {
   margin: 0;
   font-style: normal;
   font-weight: lighter;
-  font-size: 30px;
+  font-size: 28px;
   letter-spacing: 2.1px;
 }
 
@@ -162,7 +180,6 @@ option:empty {
 }
 
 .info circle {
-  stroke: steelblue;
   stroke-width: 3px;
 }
 
@@ -261,6 +278,7 @@ button {
   border-style: solid;
   border-width: 1px;
   height: fit-content;
+  min-height: 4em;
 }
 
 text.name {
