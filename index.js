@@ -1,7 +1,7 @@
-var margin = { top: 20, right: 120, bottom: 20, left: 120 },
-  width = 960 - margin.right - margin.left,
+var margin = { top: 20, right: 20, bottom: 20, left: 20 },
+  width = 1300 - margin.right - margin.left,
   height = 2100 - margin.top - margin.bottom;
-var cluster = d3.layout.cluster().size([height, width - 200]);
+var cluster = d3.layout.cluster().size([height, width - 500]);
 
 // var diagonal = d3.svg.diagonal().projection(function (d) {
 //   return [d.y, d.x];
@@ -91,6 +91,7 @@ function makeDendogram(data) {
   link.enter().append("path").attr("class", "link").attr("d", diagonal);
 
   var node = svg.selectAll(".node").data(data);
+
   node
     .enter()
     .append("g")
@@ -142,7 +143,10 @@ function makeDendogram(data) {
   d3.select(".button").on("click", function () {
     console.log("click");
 
-    d3.selectAll(".text").style("fill", "black").attr("font-weight", 100);
+    d3.selectAll(".text")
+      .style("fill", "black")
+      .attr("font-weight", 100)
+      .attr("font-size", "inherit");
 
     var txtName = d3.select("#txtName").node().value;
 
@@ -150,7 +154,10 @@ function makeDendogram(data) {
       return d.name.match(txtName);
     });
 
-    search.style("fill", "#B7336C").attr("font-weight", 600);
+    search
+      .style("fill", "#B7336C")
+      .attr("font-weight", 700)
+      .attr("font-size", "16pt");
   });
 
   // When the button is changed, run the updateChart function
@@ -225,7 +232,6 @@ function makeDendogram(data) {
         div.attr("class", "hide");
       });
 
-    console.log(d);
     var newData = data.filter(function (data) {
       d3.selectAll(".card").remove();
       if (d.category != "all") {
@@ -299,10 +305,10 @@ var dataFilter;
 function update(selectedGroup) {
   d3.select("#dataviz")
     .selectAll("svg")
-    // .transition() // apply a transition
-    // .ease("easeLinear") // control the speed of the transition
-    // .duration(400)
-    // .style("opacity", 0)
+    .transition() // apply a transition
+    .ease("easeLinear") // control the speed of the transition
+    .duration(400)
+    .style("opacity", 0)
     .remove();
 
   d3.json("data.json", function (root) {
@@ -323,6 +329,8 @@ function update(selectedGroup) {
 //update subcategory filter
 function updateCat(selectedCat) {
   d3.select("#dataviz").selectAll("svg").remove();
+
+  //if category filter = empty use old data
   if (dataFilter == null) {
     newData = data.filter(function (d) {
       return d.category == selectedCat;
