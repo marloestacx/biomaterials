@@ -1,5 +1,5 @@
-var margin = { top: 20, right: 20, bottom: 20, left: 20 },
-  width = 1300 - margin.right - margin.left,
+var margin = { top: 20, right: 120, bottom: 20, left: 120 },
+  width = 1500 - margin.right - margin.left,
   height = 2100 - margin.top - margin.bottom;
 var cluster = d3.layout.cluster().size([height, width - 500]);
 
@@ -318,7 +318,8 @@ function update(selectedGroup) {
       var newData = root.children.filter(function (d) {
         return d.base == selectedGroup;
       });
-      var cluster = d3.layout.cluster().size([600, width - 200]);
+      width = 1200;
+      var cluster = d3.layout.cluster().size([600, width - 500]);
       dataFilter = cluster.nodes(newData[0]);
     }
 
@@ -328,7 +329,13 @@ function update(selectedGroup) {
 
 //update subcategory filter
 function updateCat(selectedCat) {
-  d3.select("#dataviz").selectAll("svg").remove();
+  d3.select("#dataviz")
+    .selectAll("svg")
+    .transition() // apply a transition
+    .ease("easeLinear") // control the speed of the transition
+    .duration(400)
+    .style("opacity", 0)
+    .remove();
 
   //if category filter = empty use old data
   if (dataFilter == null) {
