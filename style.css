@@ -103,7 +103,7 @@ option:empty {
 .info {
   position: absolute;
   /* margin-top: 100px; */
-  background-color: white;
+  background-color: #f8f4e8;
   margin: 0 auto;
   width: 100%;
   min-height: 400px;
@@ -136,6 +136,7 @@ option:empty {
   border-radius: 25px;
   max-height: 25em;
   margin-bottom: 5em;
+  background-color: white;
 }
 
 #functionstitle {
@@ -252,7 +253,7 @@ button {
   flex-wrap: wrap;
   justify-content: flex-end;
   width: 45%;
-  text-align: right;
+  height: 100%;
 }
 
 #cards text {
@@ -279,6 +280,7 @@ button {
   border-width: 1px;
   height: fit-content;
   min-height: 4em;
+  background-color: white;
 }
 
 text.name {
