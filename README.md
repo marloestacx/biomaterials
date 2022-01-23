@@ -5,7 +5,7 @@
 
 Clone this repository
 
-`https://github.com/marloestacx/biomaterials.git`
+`https://github.com/marloestacx/biomaterialtoolkit.git`
 
 Use Live Server to run the project
 
