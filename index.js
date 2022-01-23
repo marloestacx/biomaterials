@@ -210,14 +210,18 @@ function makeDendogram(data) {
       d3.select(".category").append("p").text(`${d.base}`);
     }
 
+    let origin = d.origin.join(", ");
+
     if (d.origin != null) {
-      d3.select("#origin").text(`${d.origin}`);
+      d3.select("#origin").text(`${origin}`);
     } else {
       d3.select("#origin").text(" ");
     }
 
+    let functions = d.functions.join(", ");
+
     if (d.functions != null) {
-      d3.select("#functions").text(`${d.functions}`);
+      d3.select("#functions").text(`${functions}`);
     } else if (d.children[0].functions != null) {
       d3.select("#functions").text(`${d.children[0].functions}`);
     } else if (d.children[0].children[0].functions != null) {
