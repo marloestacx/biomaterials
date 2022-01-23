@@ -240,7 +240,7 @@
               "category": "polymers",
               "children": [
                 {
-                  "name": "resin plant",
+                  "name": "resin (plant)",
                   "category": "polymers",
                   "subcategory": "resins",
                   "functions": [
@@ -776,7 +776,7 @@
               "category": "polymers",
               "children": [
                 {
-                  "name": "resin animal",
+                  "name": "resin (animal)",
                   "category": "polymers",
                   "subcategory": "resins",
                   "functions": [
@@ -1207,6 +1207,21 @@
           ]
         },
         {
+          "name": "solvents & vehicles",
+          "base": "microbial",
+          "category": "solvents & vehicles",
+          "children": [
+            {
+              "name": "acidic solvent",
+              "category": "solvents & vehicles",
+              "subcategory": "",
+              "functions": ["dissolve or extract a substance  into a liquid"],
+              "base": "microbial",
+              "origin": ["vinegar", "cleaning vinegar"]
+            }
+          ]
+        },
+        {
           "name": "miscellaneous",
           "base": "microbial",
           "category": "miscellaneous",
@@ -1335,6 +1350,17 @@
           "base": "chemical compounds",
           "category": "solvents and vehicles",
           "children": [
+            {
+              "name": "acidic solvent",
+              "category": "solvents and vehicles",
+              "subcategory": "",
+              "functions": [
+                "dissolve a substance into a liquid",
+                "extract a substance into a liquid"
+              ],
+              "base": "chemical compounds",
+              "origin": ["citric acid"]
+            },
             {
               "name": "alcohols",
               "category": "solvents and vehicles",
@@ -1606,6 +1632,21 @@
           ]
         },
         {
+          "name": "solvents & vehicles",
+          "base": "inorganic",
+          "category": "solvents & vehicles",
+          "children": [
+            {
+              "name": "water",
+              "category": "solvents & vehicles",
+              "subcategory": "",
+              "functions": ["dissolve or extract a substance  into a liquid"],
+              "base": "inorganic",
+              "origin": ["hot/cold, rainwater", "distilled water", "tap water"]
+            }
+          ]
+        },
+        {
           "name": "pH modifier",
           "base": "inorganic",
           "category": "pH modifiers",
@@ -1655,6 +1696,28 @@
           "base": "petrol-based",
           "category": "polymers",
           "children": [
+            {
+              "name": "polysaccharides",
+              "base": "petrol-based",
+              "category": "polymers",
+              "children": [
+                {
+                  "name": "petrol-based polymers",
+                  "category": "polymers",
+                  "subcategory": "polysaccharides",
+                  "functions": [
+                    "give strength",
+                    "adhesion",
+                    "coating",
+                    "binder",
+                    "growth substrate",
+                    "enforcement or scaffold in composites"
+                  ],
+                  "base": "petrol-based",
+                  "origin": [""]
+                }
+              ]
+            },
             {
               "name": "resins",
               "base": "petrol-based",
