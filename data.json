@@ -1139,6 +1139,21 @@
           ]
         },
         {
+          "name": "solvents & vehicles",
+          "base": "microbial",
+          "category": "solvents & vehicles",
+          "children": [
+            {
+              "name": "acidic solvent",
+              "category": "solvents & vehicles",
+              "subcategory": "",
+              "functions": ["dissolve or extract a substance  into a liquid"],
+              "base": "microbial",
+              "origin": ["vinegar", "cleaning vinegar"]
+            }
+          ]
+        },
+        {
           "name": "pigments",
           "base": "microbial",
           "category": "pigments",
@@ -1206,21 +1221,7 @@
             }
           ]
         },
-        {
-          "name": "solvents & vehicles",
-          "base": "microbial",
-          "category": "solvents & vehicles",
-          "children": [
-            {
-              "name": "acidic solvent",
-              "category": "solvents & vehicles",
-              "subcategory": "",
-              "functions": ["dissolve or extract a substance  into a liquid"],
-              "base": "microbial",
-              "origin": ["vinegar", "cleaning vinegar"]
-            }
-          ]
-        },
+
         {
           "name": "miscellaneous",
           "base": "microbial",
