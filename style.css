@@ -109,12 +109,6 @@ option:empty {
   min-height: 400px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  margin-top: 3em;
-}
-
 .info h1 {
   padding: 10px;
   font-style: normal;
@@ -122,6 +116,14 @@ option:empty {
   font-size: 50px;
   color: rgba(0, 0, 0, 1);
   letter-spacing: 2.1px;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
 }
 
 .infoitem {
@@ -162,7 +164,7 @@ option:empty {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  max-width: 60%;
+  max-width: 75%;
   margin-left: auto;
   margin-right: auto;
 }
