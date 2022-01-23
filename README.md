@@ -1,4 +1,4 @@
-# Biomaterials
+# The Biomaterial Toolkit
 
 
 ## Installation
