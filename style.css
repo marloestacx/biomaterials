@@ -263,20 +263,24 @@ button {
 #cards text {
   font-style: normal;
   font-weight: lighter;
-  font-size: 25px;
+  font-size: 16pt;
   color: rgba(0, 0, 0, 1);
   letter-spacing: 2.1px;
+}
+
+#cards text img {
+  padding-left: 1em;
 }
 
 .card {
   display: flex;
   padding: 1em;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   margin: 1em;
   border-radius: 25px;
   width: 30%;
-  text-align: center;
+  /* text-align: center; */
   flex-flow: column;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
   border-color: rgba(224, 224, 224, 1);
@@ -285,6 +289,12 @@ button {
   height: fit-content;
   min-height: 4em;
   background-color: white;
+}
+
+.textIcon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 text.name {
