@@ -139,6 +139,8 @@ option:empty {
   border-radius: 25px;
   margin-bottom: 5em;
   background-color: white;
+  overflow: hidden;
+  height: 1%;
 }
 
 #functionstitle {
