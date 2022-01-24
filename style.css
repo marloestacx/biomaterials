@@ -103,7 +103,8 @@ option:empty {
 }
 
 .info {
-  position: absolute;
+  position: fixed;
+  top: 20%;
   /* margin-top: 100px; */
   background-color: #f8f4e8;
   margin: 0 auto;

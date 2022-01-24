@@ -128,7 +128,7 @@ function makeDendogram(data) {
     .attr("dy", 3)
     .attr("class", "text")
     //popup
-    .on("click", click)
+    .on("click", popup)
 
     .style("text-anchor", function (d) {
       return d.children ? "end" : "start";
@@ -178,19 +178,15 @@ function makeDendogram(data) {
   });
 
   //click on name
-  function click(d) {
-    div
-      .transition()
-      .duration("50")
-      .attr("opacity", ".85")
-      .style("opacity", 1)
-      .style("top", function () {
-        if (d.name == d.category) {
-          return d.x + "px";
-        } else {
-          return d.parent.x + "px";
-        }
-      });
+  function popup(d) {
+    div.transition().duration("50").attr("opacity", ".85").style("opacity", 1);
+    // .style("top", function () {
+    //   if (d.name == d.category) {
+    //     return d.x + "px";
+    //   } else {
+    //     return d.parent.x + "px";
+    //   }
+    // });
 
     d3.select(".category").select("img").remove();
     d3.select(".category").select("p").remove();
@@ -286,7 +282,7 @@ function makeDendogram(data) {
       .attr("class", "textIcon")
       .append("text")
       .attr("class", "name")
-      .on("click", click)
+      .on("click", popup)
       // .attr("width", "60px")
       // .attr("height", "60px")
       .text(function (itemName) {
