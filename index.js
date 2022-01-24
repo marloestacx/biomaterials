@@ -141,8 +141,6 @@ function makeDendogram(data) {
 
   //search
   d3.select(".button").on("click", function () {
-    console.log("click");
-
     d3.selectAll(".text")
       .style("fill", "black")
       .attr("font-weight", 100)
@@ -150,14 +148,17 @@ function makeDendogram(data) {
 
     var txtName = d3.select("#txtName").node().value;
 
-    var search = d3.selectAll(".text").filter(function (d) {
-      return d.name.match(txtName);
-    });
+    //only search if searchbox isn't empty
+    if (txtName != "") {
+      var search = d3.selectAll(".text").filter(function (d) {
+        return d.name.match(txtName);
+      });
 
-    search
-      .style("fill", "#B7336C")
-      .attr("font-weight", 700)
-      .attr("font-size", "16pt");
+      search
+        .style("fill", "#B7336C")
+        .attr("font-weight", 700)
+        .attr("font-size", "16pt");
+    }
   });
 
   // When the button is changed, run the updateChart function
