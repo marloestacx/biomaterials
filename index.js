@@ -72,10 +72,8 @@ getData();
 
 function makeDendogram(data) {
   var diagonal = d3.svg.diagonal().projection(function (d) {
-    // console.log(d);
     return [d.y, d.x];
   });
-  console.log(diagonal);
   var svg = d3
     .select("#dataviz")
     .append("svg")
@@ -238,39 +236,74 @@ function makeDendogram(data) {
         div.attr("class", "hide");
       });
 
+    // var newData = data.filter(function (data) {
+    //   d3.selectAll(".card").remove();
+    //   if (d.category != "all") {
+    //     return (
+    //       (data.category == d.category) &
+    //       (data.base == d.base) &
+    //       (data.name != d.name)
+    //     );
+    //   } else {
+    //     return (data.base == d.base) & (data.category != d.category);
+    //   }
+    // });
+
+    //get similar ingredients
     var newData = data.filter(function (data) {
       d3.selectAll(".card").remove();
-      if (d.category != "all") {
-        return (
-          (data.category == d.category) &
-          (data.base == d.base) &
-          (data.name != d.name)
-        );
-      } else {
-        return (data.base == d.base) & (data.category != d.category);
-      }
+      // if (d.category != "all") {
+      //   return (
+      //     (data.category == d.category) &
+      //     (data.base == d.base) &
+      //     (data.name != d.name)
+      //   );
+      // } else {
+      return (data.category == d.category) & (data.base != d.base);
+      // }
     });
+
+    var cardData = [];
+
+    for (var i = 0; i < 6; i++) {
+      var random =
+        newData[Math.floor(Math.random() * Object.keys(newData).length)];
+      cardData.push(random);
+    }
+
+    console.log(cardData);
 
     //cards
     var cards = d3.select("#cards");
-    var extrainfo = cards.selectAll("text").data(newData);
+    var extrainfo = cards.selectAll("text").data(cardData);
     extrainfo
       .enter()
       .append("div")
       .attr("class", "card")
       .attr("width", 370)
       .attr("height", 140)
+      .append("div")
+      .attr("class", "textIcon")
       .append("text")
       .attr("class", "name")
       .on("click", click)
-      .attr("width", "60px")
-      .attr("height", "60px")
-      .text(function (e) {
-        return e.name;
+      // .attr("width", "60px")
+      // .attr("height", "60px")
+      .text(function (itemName) {
+        return itemName.name;
       });
 
+    extrainfo
+      .select(".textIcon")
+      .append("img")
+      .attr("src", function (item) {
+        return "images/" + item.parent.base + ".svg";
+      })
+      .attr("width", 30)
+      .attr("height", 30);
+
     extrainfo.append("text").text(function (d) {
-      if ((d.name !== d.category) & (d.parent.base != "all")) {
+      if ((d.name != d.category) & (d.parent.base != "all")) {
         return d.category;
       }
     });
