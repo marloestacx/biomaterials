@@ -211,21 +211,22 @@ function makeDendogram(data) {
       d3.select(".category").append("p").text(`${d.base}`);
     }
 
-    let origin = d.origin.join(", ");
-
     if (d.origin != null) {
+      let origin = d.origin.join(", ");
       d3.select("#origin").text(`${origin}`);
     } else {
       d3.select("#origin").text(" ");
     }
 
-    let functions = d.functions.join(", ");
-
+    //get functions from ingridient
     if (d.functions != null) {
+      let functions = d.functions.join(", ");
       d3.select("#functions").text(`${functions}`);
     } else if (d.children[0].functions != null) {
+      functions = d.children[0].functions.join(", ");
       d3.select("#functions").text(`${d.children[0].functions}`);
     } else if (d.children[0].children[0].functions != null) {
+      functions = d.children[0].children[0].functions.join(", ");
       d3.select("#functions").text(`${d.children[0].children[0].functions}`);
     } else {
       d3.select("#functions").text(" ");
