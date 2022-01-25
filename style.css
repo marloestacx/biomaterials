@@ -36,6 +36,7 @@ h2 {
   text-align: center;
   font-weight: 300;
   letter-spacing: 2.1px;
+  width: 100%;
 }
 
 select {
@@ -105,7 +106,6 @@ option:empty {
 .info {
   position: fixed;
   top: 20%;
-  /* margin-top: 100px; */
   background-color: #f8f4e8;
   margin: 0 auto;
   width: 100%;
@@ -126,7 +126,7 @@ option:empty {
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 3em;
+  margin-top: 1em;
 }
 
 .infoitem {
@@ -142,6 +142,7 @@ option:empty {
   background-color: white;
   overflow: hidden;
   height: 1%;
+  margin-top: 2.65em;
 }
 
 #functionstitle {
@@ -256,7 +257,7 @@ button {
 #cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   width: 45%;
   height: 100%;
 }
@@ -280,7 +281,7 @@ button {
   /* align-items: center; */
   margin: 1em;
   border-radius: 25px;
-  width: 30%;
+  width: 35%;
   /* text-align: center; */
   flex-flow: column;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
