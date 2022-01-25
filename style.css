@@ -109,7 +109,7 @@ option:empty {
   display: none;
 }
 
-.info {
+.popup {
   position: fixed;
   top: 20%;
   background-color: #f8f4e8;
@@ -118,7 +118,7 @@ option:empty {
   min-height: 400px;
 }
 
-.info h1 {
+.popup h1 {
   padding: 10px;
   font-style: normal;
   font-weight: lighter;
@@ -135,7 +135,7 @@ option:empty {
   margin-top: 1em;
 }
 
-.infoitem {
+.info {
   width: 50%;
   padding: 2em;
   margin-left: 6em;
@@ -192,11 +192,11 @@ option:empty {
   padding-right: 1em;
 }
 
-.info circle {
+.popup circle {
   stroke-width: 3px;
 }
 
-.info svg {
+.popup svg {
   position: absolute;
   left: 0px;
   top: 0px;
@@ -295,7 +295,7 @@ button {
   border-style: solid;
   border-width: 1px;
   height: fit-content;
-  min-height: 4em;
+  min-height: 6.5em;
   background-color: white;
 }
 
