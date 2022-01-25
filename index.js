@@ -165,7 +165,7 @@ function makeDendogram(data) {
     selectedOption = d3.select(this).property("value");
 
     // node.exit().remove();
-    update(selectedOption);
+    updateCat(selectedOption);
   });
 
   // When the button is changed, run the updateChart function
@@ -174,21 +174,12 @@ function makeDendogram(data) {
     const selectedCat = d3.select(this).property("value");
 
     // node.exit().remove();
-    updateCat(selectedCat);
+    updateSubCat(selectedCat);
   });
 
   //click on name
   function popup(d) {
     div.transition().duration("50").attr("opacity", ".85").style("opacity", 1);
-    // .style("top", function () {
-    //   if (d.name == d.category) {
-    //     return d.x + "px";
-    //   } else {
-    //     return d.parent.x + "px";
-    //   }
-    // });
-
-    console.log(d);
 
     d3.select(".category").select("img").remove();
     d3.select(".category").select("p").remove();
@@ -217,14 +208,18 @@ function makeDendogram(data) {
     //get functions from ingridient
     if (d.functions != null) {
       let functions = d.functions.join(", ");
+      d3.select("#functionsTitle").text("Functions");
       d3.select("#functions").text(`${functions}`);
     } else if (d.children[0].functions != null) {
+      d3.select("#functionsTitle").text("Functions");
       functions = d.children[0].functions.join(", ");
       d3.select("#functions").text(`${d.children[0].functions}`);
     } else if (d.children[0].children[0].functions != null) {
+      d3.select("#functionsTitle").text("Functions");
       functions = d.children[0].children[0].functions.join(", ");
       d3.select("#functions").text(`${d.children[0].children[0].functions}`);
     } else {
+      d3.select("#functionsTitle").text(" ");
       d3.select("#functions").text(" ");
     }
 
@@ -265,11 +260,9 @@ function makeDendogram(data) {
           newData[Math.floor(Math.random() * Object.keys(newData).length)];
 
         if (cardData.includes(random)) {
-          console.log("bestaat al");
         } else {
           cardData.push(random);
           i++;
-          console.log("toegevoegd" + i);
         }
       }
     } else {
@@ -278,8 +271,8 @@ function makeDendogram(data) {
 
     //cards
     var cards = d3.select("#cards");
-    var extrainfo = cards.selectAll("text").data(cardData);
-    extrainfo
+    var extraInfo = cards.selectAll("text").data(cardData);
+    extraInfo
       .enter()
       .append("div")
       .attr("class", "card")
@@ -290,13 +283,11 @@ function makeDendogram(data) {
       .append("text")
       .attr("class", "name")
       .on("click", popup)
-      // .attr("width", "60px")
-      // .attr("height", "60px")
       .text(function (itemName) {
         return itemName.name;
       });
 
-    extrainfo
+    extraInfo
       .select(".textIcon")
       .append("img")
       .attr("src", function (item) {
@@ -305,7 +296,7 @@ function makeDendogram(data) {
       .attr("width", 30)
       .attr("height", 30);
 
-    extrainfo.append("text").text(function (d) {
+    extraInfo.append("text").text(function (d) {
       if (d.parent.base != "all") {
         return d.base;
       }
@@ -344,14 +335,16 @@ function makeDendogram(data) {
 var dataFilter;
 
 // update catagory filter
-function update(selectedGroup) {
+function updateCat(selectedGroup) {
   d3.select("#dataviz")
     .selectAll("svg")
-    .transition() // apply a transition
-    .ease("easeLinear") // control the speed of the transition
+    .transition()
+    .ease("easeLinear")
     .duration(400)
     .style("opacity", 0)
     .remove();
+
+  d3.select("#dataviz").selectAll("p").remove();
 
   d3.json("data.json", function (root) {
     if (selectedGroup == "all") {
@@ -370,14 +363,16 @@ function update(selectedGroup) {
 }
 
 //update subcategory filter
-function updateCat(selectedCat) {
+function updateSubCat(selectedCat) {
   d3.select("#dataviz")
     .selectAll("svg")
-    .transition() // apply a transition
-    .ease("easeLinear") // control the speed of the transition
+    .transition()
+    .ease("easeLinear")
     .duration(400)
     .style("opacity", 0)
     .remove();
+
+  d3.select("#dataviz").selectAll("p").remove();
 
   //if category filter = empty use old data
   if (dataFilter == null) {
@@ -392,5 +387,10 @@ function updateCat(selectedCat) {
   if (selectedCat == "all") {
     newData = dataFilter;
   }
+
+  if (newData.length == 0) {
+    d3.select("#dataviz").append("p").text("Nothing found please filter again");
+  }
+
   makeDendogram(newData);
 }
