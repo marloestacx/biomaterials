@@ -1,8 +1,14 @@
 # The Biomaterial Toolkit
 
-## Purpose
+* [Concept](https://github.com/marloestacx/biomaterialtoolkit#Concept)
+* [Data](https://github.com/marloestacx/biomaterialtoolkit#Data)
+* [Libraries](https://github.com/marloestacx/biomaterialtoolkit#Libraries)
+<!-- * [Rubric](https://github.com/marloestacx/biomaterialtoolkit#clipboard-rubric) -->
+* [Live website](https://github.com/marloestacx/biomaterialtoolkit#Live-website)
+* [Installation](https://github.com/marloestacx/biomaterialtoolkit#Installation)
+* [Resources](https://github.com/marloestacx/biomaterialtoolkit#Resources)
+* [License](https://github.com/marloestacx/biomaterialtoolkit#License)
 
-The purpose of this proect is a website where you can find ingridients. 
 
 ## Concept
 
@@ -12,8 +18,7 @@ Our councept is a websote where you can find ingredients, you can comppare these
 
 ## Libraries
 
-## Resources
-
+## Live website
 
 ## Installation
 
@@ -24,6 +29,8 @@ Clone this repository
 Use Live Server to run the project
 
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+
+## Resources
 
 ## License
 
