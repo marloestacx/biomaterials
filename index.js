@@ -7,7 +7,7 @@ var cluster = d3.layout.cluster().size([height, width - 500]);
 //   return [d.y, d.x];
 // });
 
-var div = d3.select("#info").style("opacity", 0);
+var div = d3.select("#popup").style("opacity", 0);
 
 // d3.select("#close").on("click", close);
 
@@ -328,7 +328,7 @@ function makeDendogram(data) {
           return "yellow";
         }
       });
-    div.attr("class", "info");
+    div.attr("class", "popup");
   }
 }
 
