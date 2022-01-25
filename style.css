@@ -78,6 +78,12 @@ select {
 #dataviz {
   text-align: center;
 }
+
+#dataviz p {
+  letter-spacing: 1.1px;
+  padding: 1em;
+}
+
 .node {
   cursor: pointer;
 }
@@ -145,13 +151,13 @@ option:empty {
   margin-top: 2.65em;
 }
 
-#functionstitle {
+#functionsTitle {
   font-size: 25px;
   color: rgba(0, 0, 0, 1);
   letter-spacing: 1.1px;
 }
 
-.subtext {
+.subText {
   margin-left: 6em;
   margin-right: 6em;
   font-size: 20px;
