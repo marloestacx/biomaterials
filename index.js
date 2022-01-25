@@ -188,6 +188,8 @@ function makeDendogram(data) {
     //   }
     // });
 
+    // console.log(d);
+
     d3.select(".category").select("img").remove();
     d3.select(".category").select("p").remove();
     //icon
@@ -226,8 +228,11 @@ function makeDendogram(data) {
       d3.select("#functions").text(" ");
     }
 
+    d3.select("#close").selectAll("img").remove();
+
     d3.select("#close")
-      .text("close")
+      .append("img")
+      .attr("src", "images/close.svg")
       .on("click", function () {
         div.attr("class", "hide");
       });
@@ -255,19 +260,37 @@ function makeDendogram(data) {
       //     (data.name != d.name)
       //   );
       // } else {
-      return (data.category == d.category) & (data.base != d.base);
-      // }
+
+      if (d.category == "surfactants") {
+        return (data.category == d.category) & (data.base == d.base);
+      } else {
+        return (
+          (data.category == d.category) &
+          (data.base != d.base) &
+          (d.parent.category != "all")
+        );
+      }
     });
 
     var cardData = [];
 
-    for (var i = 0; i < 6; i++) {
-      var random =
-        newData[Math.floor(Math.random() * Object.keys(newData).length)];
-      cardData.push(random);
-    }
+    if (Object.keys(newData).length > 6) {
+      //get 6 random items
+      for (var i = 0; i < 6; ) {
+        var random =
+          newData[Math.floor(Math.random() * Object.keys(newData).length)];
 
-    console.log(cardData);
+        if (cardData.includes(random)) {
+          console.log("bestaat al");
+        } else {
+          cardData.push(random);
+          i++;
+          console.log("toegevoegd" + i);
+        }
+      }
+    } else {
+      cardData = newData;
+    }
 
     //cards
     var cards = d3.select("#cards");
@@ -299,8 +322,8 @@ function makeDendogram(data) {
       .attr("height", 30);
 
     extrainfo.append("text").text(function (d) {
-      if ((d.name != d.category) & (d.parent.base != "all")) {
-        return d.category;
+      if (d.parent.base != "all") {
+        return d.base;
       }
     });
 
