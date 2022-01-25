@@ -188,7 +188,7 @@ function makeDendogram(data) {
     //   }
     // });
 
-    // console.log(d);
+    console.log(d);
 
     d3.select(".category").select("img").remove();
     d3.select(".category").select("p").remove();
@@ -237,32 +237,16 @@ function makeDendogram(data) {
         div.attr("class", "hide");
       });
 
-    // var newData = data.filter(function (data) {
-    //   d3.selectAll(".card").remove();
-    //   if (d.category != "all") {
-    //     return (
-    //       (data.category == d.category) &
-    //       (data.base == d.base) &
-    //       (data.name != d.name)
-    //     );
-    //   } else {
-    //     return (data.base == d.base) & (data.category != d.category);
-    //   }
-    // });
-
     //get similar ingredients
     var newData = data.filter(function (data) {
       d3.selectAll(".card").remove();
-      // if (d.category != "all") {
-      //   return (
-      //     (data.category == d.category) &
-      //     (data.base == d.base) &
-      //     (data.name != d.name)
-      //   );
-      // } else {
 
       if (d.category == "surfactants") {
         return (data.category == d.category) & (data.base == d.base);
+      } else if (d.parent.category == "all") {
+        return (d.category == data.category) & (d.base != data.base);
+      } else if (d.category == "all") {
+        return (data.base == d.base) & (data.category != "all");
       } else {
         return (
           (data.category == d.category) &
