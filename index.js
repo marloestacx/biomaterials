@@ -378,7 +378,7 @@ function updateSubCat(selectedCat) {
   }
 
   if (newData.length == 0) {
-    d3.select("#dataviz").append("p").text("Nothing found please filter again");
+    d3.select("#dataviz").append("p").text("Nothing found, please try again");
   }
 
   makeDendogram(newData);
