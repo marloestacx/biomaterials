@@ -94,6 +94,8 @@ function makeDendogram(data) {
   node
     .append("circle")
     .attr("r", 4.5)
+    //popup
+    .on("click", popup)
     .style("fill", function (d) {
       if (d.base === "plants" || d.headbase === "plants") {
         return "green";
@@ -122,7 +124,6 @@ function makeDendogram(data) {
     .attr("class", "text")
     //popup
     .on("click", popup)
-
     .style("text-anchor", function (d) {
       return d.children ? "end" : "start";
     })
