@@ -13,6 +13,9 @@
 
 Our councept is a websote where you can find ingredients, you can comppare these by filtering. When you click on one of the ingredients you see some information about the ingredient and you can see similair ones next to it. You can search for ingredients by typing in the name or part of it.
 
+<img src="https://github.com/marloestacx/biomaterialtoolkit/blob/main/images/readme/1.png">
+<img src="https://github.com/marloestacx/biomaterialtoolkit/blob/main/images/readme/2.png">
+
 ## Data
 The data used for this project came from an excel sheet which we converted to a json file which can be found [here](https://github.com/marloestacx/biomaterialtoolkit/blob/main/data.json)
 
