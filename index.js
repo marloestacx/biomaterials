@@ -3,13 +3,7 @@ var margin = { top: 20, right: 120, bottom: 20, left: 120 },
   height = 2100 - margin.top - margin.bottom;
 var cluster = d3.layout.cluster().size([height, width - 500]);
 
-// var diagonal = d3.svg.diagonal().projection(function (d) {
-//   return [d.y, d.x];
-// });
-
 var div = d3.select("#popup").style("opacity", 0);
-
-// d3.select("#close").on("click", close);
 
 // Creates sources <svg> element
 const svginfo = d3.select("#shapes");
@@ -28,7 +22,7 @@ function getData() {
       })
       .keys();
 
-    // add the options to the button
+    // add the options to the filter
     d3.select("#selectButton")
       .selectAll("myOptions")
       .data(allGroup)
@@ -39,16 +33,15 @@ function getData() {
       }) // text showed in the menu
       .attr("value", function (d) {
         return d;
-      }); // corresponding value returned by the button
+      });
 
-    // List of groups (here I have one group per column)
     var allGroupCat = d3
       .map(data, function (d) {
         return d.category;
       })
       .keys();
 
-    // add the options to the button
+    // add the options to the filter
     d3.select("#selectCat")
       .selectAll("myOptions")
       .data(allGroupCat)
@@ -63,7 +56,7 @@ function getData() {
         if (d != "undefined") {
           return d;
         }
-      }); // corresponding value returned by the button
+      });
 
     makeDendogram(data);
   });
@@ -163,8 +156,6 @@ function makeDendogram(data) {
   d3.select("#selectButton").on("change", function (d) {
     // recover the option that has been chosen
     selectedOption = d3.select(this).property("value");
-
-    // node.exit().remove();
     updateCat(selectedOption);
   });
 
@@ -172,8 +163,6 @@ function makeDendogram(data) {
   d3.select("#selectCat").on("change", function (d) {
     // recover the option that has been chosen
     const selectedCat = d3.select(this).property("value");
-
-    // node.exit().remove();
     updateSubCat(selectedCat);
   });
 

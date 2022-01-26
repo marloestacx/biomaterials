@@ -45,9 +45,6 @@ select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  /* and then whatever styles you want*/
-  /* height: 30px;
-  width: 100px; */
   padding: 0.5em;
   padding-right: 2.5em;
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
@@ -243,14 +240,6 @@ button {
   position: absolute;
   width: 493px;
   height: 37px;
-  /* 
-  text-align: center;
-  font-family: Calibri;
-  font-style: normal;
-  font-weight: lighter;
-  font-size: 30px;
-  color: rgba(0, 0, 0, 1);
-  letter-spacing: 2.1px; */
 }
 
 #close {
@@ -284,11 +273,9 @@ button {
   display: flex;
   padding: 1em;
   justify-content: center;
-  /* align-items: center; */
   margin: 1em;
   border-radius: 25px;
   width: 35%;
-  /* text-align: center; */
   flex-flow: column;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
   border-color: rgba(224, 224, 224, 1);
