@@ -241,6 +241,12 @@ function makeDendogram(data) {
       }
     });
 
+    if (newData.length == 0) {
+      newData = data.filter(function (data) {
+        return (data.base == d.base) & (data.category == d.category);
+      });
+    }
+
     var cardData = [];
 
     if (Object.keys(newData).length > 6) {
