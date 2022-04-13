@@ -13,11 +13,12 @@
 
 Our concept is a website where you can find ingredients, you can find an ingredient in the graph and then find a similar one to replace it with. You can filter out part of the graph by using the filter function at the top. You can search for ingredients by typing in the name or part of it. When you click on one of the ingredients you see some information about the ingredient, and you can see similar ones next to it.
 
-<img src="https://github.com/marloestacx/biomaterialtoolkit/blob/main/images/readme/1.png">
-<img src="https://github.com/marloestacx/biomaterialtoolkit/blob/main/images/readme/2.png">
+<img src="https://github.com/marloestacx/biomaterialtoolkit/blob/main/images/readme/1.png?raw=true">
+<img src="https://github.com/marloestacx/biomaterialtoolkit/blob/main/images/readme/2.png?raw=true">
 
 ## Data
 The data used for this project came from an excel sheet which we converted to a json file which can be found [here](https://github.com/marloestacx/biomaterialtoolkit/blob/main/data.json)
+
 
 ## Library
 This project uses [D3.js](https://d3js.org) 
